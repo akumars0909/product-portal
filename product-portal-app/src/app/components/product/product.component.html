@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-   <div *ngFor="let arr of umbrellas" class="col-lg-4">
+   <div *ngFor="let item of umbrellas" class="col-lg-4">
        <div class="card">
-      <img class="card-img-top" src="{{arr.images[0].base_url +arr.images[0].primary}}" alt="Card image cap">
+      <img class="card-img-top" src="{{item.images[0].base_url +item.images[0].primary}}" alt="Card image cap">
       <div class="card-body">
-        <p><b>$ {{arr.offer_price.price}}</b></p>
-        <h5 class="card-title">{{arr.title}}</h5>
-        <p class="card-text">{{arr.description}}</p>
-        <a href="#" class="btn btn-primary">Add to Cart</a>
+        <p><b>$ {{item.offer_price.price}}</b></p>
+        <h5 class="card-title">{{item.title}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <a href="javascript:void(0)" class="btn btn-primary" (click)="productDetails(item)">Add to Cart</a>
       </div>
     </div>
     </div> 

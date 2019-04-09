@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../../services/product-data.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-product',
@@ -10,8 +11,10 @@ export class ProductComponent implements OnInit {
 
   constructor(private product: ProductDataService) { }
 
-  public items = [];
-  public umbrellas = [];
+  //Detailed interfaces will be written for the data received into the variables below.
+  //Should not be declared as 'any'
+  public items:any = [];
+  public umbrellas:any = [];
 
   ngOnInit() {
     this.getProductDetails();
@@ -20,19 +23,18 @@ export class ProductComponent implements OnInit {
    private getProductDetails(){
      this.product.getProductData().subscribe(data => {
        if(data){
-        console.log(data.search_response.items);
-        console.log(data.search_response.items.Item[0].images[0].base_url);
 
         this.items = data.search_response.items.Item;
 
         for(let i=0; i<this.items.length; i++){
           this.umbrellas.push(this.items[i]);
         }
-
-        console.log(this.umbrellas[0].images[0].base_url +this.umbrellas[0].images[0].primary );
-        console.log(typeof(this.umbrellas));
        }
      })
+   }
+
+   productDetails(item){
+     /* Here the code goes for adding the particular item into the Cart component  */
    }
 
 }
